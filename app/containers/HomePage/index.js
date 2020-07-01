@@ -1,18 +1,31 @@
-/*
- * HomePage
- *
- * This is the first thing users see of our App, at the '/' route
- *
- */
-
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
+import { Helmet } from 'react-helmet';
+
+import Main from '../../components/Home/Main'
+import Why from '../../components/Home/Why'
+import About from '../../components/Home/About'
+import Features from '../../components/Home/Features'
+import Testimonials from '../../components/Home/Testimonials'
+import Screenshots from '../../components/Home/Screenshots'
+import Download from '../../components/Home/Download'
+
+
+
+
+
+
 
 export default function HomePage() {
   return (
-    <h1>
-      <FormattedMessage {...messages.header} />
-    </h1>
+    <div>
+        <Helmet title="Inky - Home" />
+        <Main />
+        <Why />
+        <About />
+        <Features />
+        <Testimonials />
+        <Screenshots />
+        <Download />
+    </div> 
   );
 }

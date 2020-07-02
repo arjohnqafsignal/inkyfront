@@ -1,52 +1,77 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {
+  Row,
+  Col,
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  Button,
+} from 'reactstrap';
 import Logo from '../assets/images/logo.png';
 
-export default function Header() {
+export default function Header({ googleLogin }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => setIsOpen(!isOpen);
+
   return (
     <div>
-      <header class="header-area">
-        <div class="navbar-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <nav class="navbar navbar-expand-lg">
-                            <a class="navbar-brand" href="/">
-                                <img src={Logo} alt="Logo" />
-                            </a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="toggler-icon"></span>
-                                <span class="toggler-icon"></span>
-                                <span class="toggler-icon"></span>
-                            </button>
+      <header className="header-area">
+        <div className="navbar-area">
+          <div className="container">
+            <Row>
+              <Col lg={12}>
+                <Navbar expand="lg">
+                  <NavbarBrand href="/">
+                    <img src={Logo} alt="Logo" />
+                  </NavbarBrand>
 
-                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                                <ul id="nav" class="navbar-nav ml-auto">
-                                    <li class="nav-item active">
-                                        <a class="page-scroll" href="#home">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="page-scroll" href="#why">Why</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="page-scroll" href="#features">Features</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="page-scroll" href="#screenshots">Screenshots</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="page-scroll" href="#pricing">Pricing</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="page-scroll" href="#download">Download</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
+                  <NavbarToggler onClick={toggle} navbar="true" />
+
+                  <Collapse isOpen={isOpen} navbar>
+                    <Nav className="ml-auto" navbar>
+                      <NavItem>
+                        <NavLink className="page-scroll" href="#home">
+                          Home
+                        </NavLink>
+                      </NavItem>
+                      <NavItem>
+                        <NavLink className="page-scroll" href="#why">
+                          Why
+                        </NavLink>
+                      </NavItem>
+                      <NavItem>
+                        <NavLink className="page-scroll" href="#features">
+                          Features
+                        </NavLink>
+                      </NavItem>
+                      <NavItem>
+                        <NavLink className="page-scroll" href="#screenshots">
+                          Screenshots
+                        </NavLink>
+                      </NavItem>
+                      <NavItem>
+                        <NavLink className="page-scroll" href="#pricing">
+                          Pricing
+                        </NavLink>
+                      </NavItem>
+                      <NavItem>
+                        <Button color="danger" onClick={googleLogin}>
+                          Login using Google <i className="lni lni-google" />
+                        </Button>
+                      </NavItem>
+                    </Nav>
+                  </Collapse>
+                </Navbar>
+              </Col>
+            </Row>
+          </div>
         </div>
       </header>
-    </div> 
+    </div>
   );
 }

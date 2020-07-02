@@ -38,7 +38,6 @@ export default function Footer() {
               <div className="col-lg-5 col-md-6">
                 <div className="footer-link d-flex flex-wrap">
                   <div className="footer-link-wrapper mt-45 wow fadeIn" data-wow-duration="1.3s" data-wow-delay="0.4s">
-                  <div>
                     <div className="footer-title">
                       <h4 className="title">Quick Links</h4>
                     </div>
@@ -113,18 +112,15 @@ export default function Footer() {
                 <div className="copyright d-sm-flex justify-content-between">
                   <div className="copyright-text text-center">
                     <p className="text">Crafted by <a rel="nofollow" href="https://singledraft.com/">SingleDraft</a></p>
+                  </div>
                   <div className="copyright-privacy text-center">
                     <a href="#">Report Issues</a>
-                  </div> 
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        
-        </div>
-        
         <a href="#" className="back-to-top"><i className="lni lni-chevron-up"></i></a>
       </footer>
 

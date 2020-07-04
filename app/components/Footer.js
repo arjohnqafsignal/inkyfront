@@ -80,21 +80,21 @@ export default function Footer() {
                     <li>
                       <div className="contact-info d-flex">
                         <div className="info-content media-body">
-                          <p className="text"><a href="#"><i className="lni lni-envelope"></i> info@appland.com</a></p>
+                          <p className="text"><a href="#"><i className="lni lni-envelope"></i> info@inky.ph</a></p>
                         </div>
                       </div> 
                     </li>
                     <li>
                       <div className="contact-info d-flex">
                         <div className="info-content media-body">
-                          <p className="text"><a href="#"><i className="lni lni-world"></i> www.yourweb.com</a></p>
+                          <p className="text"><a href="#"><i className="lni lni-world"></i> www.inky.ph</a></p>
                         </div>
                       </div> 
                     </li>
                     <li>
                       <div className="contact-info d-flex">
                         <div className="info-content media-body">
-                          <p className="text"><i className="lni lni-map"></i> 123 Stree New York City , United States Of America 750.</p>
+                          <p className="text"><i className="lni lni-map"></i> Cainta, Rizal.</p>
                         </div>
                       </div> 
                     </li>

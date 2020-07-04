@@ -36,7 +36,6 @@ export function HomePage({googleLogin}) {
   );
 }
 
-
 HomePage.propTypes = {
   googleLogin: PropTypes.func
 };

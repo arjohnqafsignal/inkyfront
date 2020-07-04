@@ -1,19 +1,19 @@
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
-const selectRouter = state => state.router;
-const selectGlobal = state => state.global || initialState;
+const selectApp = state => state.app || initialState;
 
-const makeSelectLocation = () =>
+
+const makeAppLoading = () =>
   createSelector(
-    selectRouter,
-    routerState => routerState.location,
+    selectApp,
+    state => state.loading,
+  );
+const makeGoogleResponse = () =>
+  createSelector(
+    selectApp,
+    state => state.googleResponse,
   );
 
-const makeSelectLoading = () =>
-  createSelector(
-    selectGlobal,
-    globalState => globalState.loading,
-  );
-
-export { makeSelectLocation, makeSelectLoading };
+export default makeAppLoading;
+export { selectApp, makeGoogleResponse };

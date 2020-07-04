@@ -13,9 +13,10 @@ import {
   LOGIN_GOOGLE_SUCCESS,
 } from './constants';
 
-export function loginGoogle() {
+export function loginGoogle(response) {
   return {
     type: LOGIN_GOOGLE,
+    response
   };
 }
 

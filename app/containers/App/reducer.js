@@ -10,29 +10,33 @@ export const initialState = {
   loading: false,
   error: false,
   currentUser: null,
+  googleResponse: null,
 };
 
-/* eslint-disable default-case, no-param-reassign */
 const appReducer = (state = initialState, action) =>
   produce(state, draft => {
-    switch (action.type) {
+    switch (action.type) {  
       case LOGIN_GOOGLE:
         draft.loading = true;
         draft.error = false;
         draft.currentUser = null;
+        draft.googleResponse = action.response;
         break;
 
       case LOGIN_GOOGLE_SUCCESS:
         draft.loading = false;
         draft.error = false;
         draft.currentUser = action.user;
+        draft.googleResponse = null;
         break;
 
       case LOGIN_GOOGLE_ERROR:
         draft.error = action.error;
         draft.loading = false;
         draft.currentUser = null;
+        draft.googleResponse = null;
         break;
+        
     }
   });
 

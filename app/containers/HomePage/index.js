@@ -1,6 +1,13 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
+import PropTypes from 'prop-types';
+
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+
+import { loginGoogle } from '../App/actions'
+
 import WOW from 'wowjs';
 import Main from '../../components/Home/Main';
 import Why from '../../components/Home/Why';
@@ -10,7 +17,7 @@ import Testimonials from '../../components/Home/Testimonials';
 import Screenshots from '../../components/Home/Screenshots';
 import Download from '../../components/Home/Download';
 
-export default function HomePage() {
+export function HomePage({googleLogin}) {
   useEffect(() => {
     const wow = new WOW.WOW();
     wow.init();
@@ -18,7 +25,7 @@ export default function HomePage() {
   return (
     <div>
       <Helmet title="Inky - Home" />
-      <Main />
+      <Main googleLogin={googleLogin} />
       <Why />
       <About />
       <Features />
@@ -28,3 +35,24 @@ export default function HomePage() {
     </div>
   );
 }
+
+
+HomePage.propTypes = {
+  googleLogin: PropTypes.func
+};
+
+export function mapDispatchToProps(dispatch) {
+  return {
+     googleLogin: (response) => dispatch(loginGoogle(response)),
+  };
+}
+
+const withConnect = connect(
+  null,
+  mapDispatchToProps,
+);
+
+export default compose(
+  withConnect
+)(HomePage);
+

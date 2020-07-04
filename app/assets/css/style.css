@@ -595,7 +595,7 @@ p {
     .navbar-nav .nav-item {
       margin: 0; } }
   .navbar-nav .nav-item a {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     color: #38424D;
     -webkit-transition: all 0.3s ease-out 0s;

@@ -11,13 +11,17 @@ import {
   NavLink,
   Button,
 } from 'reactstrap';
-import Logo from '../assets/images/logo.png';
 
-export default function Header({ googleLogin }) {
+
+import { GoogleLogin } from 'react-google-login';
+
+import Logo from '../assets/images/inkytest.png';
+
+export default function Header({ googleLogin}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
-
+  
   return (
     <div>
       <header className="header-area">
@@ -60,9 +64,21 @@ export default function Header({ googleLogin }) {
                         </NavLink>
                       </NavItem>
                       <NavItem>
-                        <Button color="danger" onClick={googleLogin}>
+                        {/* <Button color="primary" onClick={googleLogin}>
                           Login using Google <i className="lni lni-google" />
-                        </Button>
+                        </Button> */}
+                        <GoogleLogin
+                          clientId="1033155606199-d4vcfo3gs30brur67pq253haf75dv34i.apps.googleusercontent.com"
+                          render={renderProps => (
+                            <Button color="primary" onClick={renderProps.onClick}>
+                              Login using Google <i className="lni lni-google" />
+                            </Button>
+                          )}
+                          buttonText="Login"
+                          onSuccess={googleLogin}
+                          onFailure={googleLogin}
+                          cookiePolicy={'single_host_origin'}
+                        />
                       </NavItem>
                     </Nav>
                   </Collapse>

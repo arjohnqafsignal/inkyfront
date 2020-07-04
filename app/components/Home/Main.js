@@ -5,7 +5,10 @@ import HeaderImg from '../../assets/images/header-app.png';
 import ImageShape from '../../assets/images/image-shape.svg';
 import ImageShape2 from '../../assets/images/header-shape-2.svg';
 
-export default function Main() {
+
+import { GoogleLogin } from 'react-google-login';
+
+export default function Main({googleLogin}) {
   return (
     <div>
       <div
@@ -41,14 +44,33 @@ export default function Main() {
                 </p>
                 <ul className="d-flex">
                   <li>
-                    <Button
+                    {/* <Button
                       color="danger"
                       className="main-btn wow fadeInLeftBig"
                       data-wow-duration="1.3s"
                       data-wow-delay="0.8s"
+                      onClick={googleLogin}
                     >
                       Login using Google
-                    </Button>
+                    </Button> */}
+                    <GoogleLogin
+                          clientId="1033155606199-d4vcfo3gs30brur67pq253haf75dv34i.apps.googleusercontent.com"
+                          render={renderProps => (
+                            <Button
+                                color="danger"
+                                className="main-btn wow fadeInLeftBig"
+                                data-wow-duration="1.3s"
+                                data-wow-delay="0.8s"
+                                onClick={renderProps.onClick}
+                              >
+                                Login using Google
+                            </Button>
+                          )}
+                          buttonText="Login"
+                          onSuccess={googleLogin}
+                          onFailure={googleLogin}
+                          cookiePolicy={'single_host_origin'}
+                        />
                   </li>
                   <li>
                     <a

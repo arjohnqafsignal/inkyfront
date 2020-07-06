@@ -14,6 +14,16 @@ const makeGoogleResponse = () =>
     selectApp,
     state => state.googleResponse,
   );
+const makeCurrentUser = () =>
+  createSelector(
+    selectApp,
+    state => state.currentUser,
+  );
+const makeIsLogged = () =>
+  createSelector(
+    selectApp,
+    state => state.isLogged,
+  );
 
 export default makeAppLoading;
-export { selectApp, makeGoogleResponse };
+export { makeAppLoading, selectApp, makeGoogleResponse, makeCurrentUser, makeIsLogged };

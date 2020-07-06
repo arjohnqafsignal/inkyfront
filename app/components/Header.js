@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+
+import PropTypes from 'prop-types';
 import {
   Row,
   Col,
@@ -9,19 +11,17 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Button,
 } from 'reactstrap';
 
-
-import { GoogleLogin } from 'react-google-login';
+import HeaderButton from './HeaderButton'
 
 import Logo from '../assets/images/inkytest.png';
 
-export default function Header({ googleLogin}) {
-  const [isOpen, setIsOpen] = useState(false);
 
+
+function Header({googleLogin, googleLogout, propIsLogged, propUser}) {
+  const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  
   return (
     <div>
       <header className="header-area">
@@ -64,21 +64,8 @@ export default function Header({ googleLogin}) {
                         </NavLink>
                       </NavItem>
                       <NavItem>
-                        {/* <Button color="primary" onClick={googleLogin}>
-                          Login using Google <i className="lni lni-google" />
-                        </Button> */}
-                        <GoogleLogin
-                          clientId="1033155606199-d4vcfo3gs30brur67pq253haf75dv34i.apps.googleusercontent.com"
-                          render={renderProps => (
-                            <Button color="primary" onClick={renderProps.onClick}>
-                              Login using Google <i className="lni lni-google" />
-                            </Button>
-                          )}
-                          buttonText="Login"
-                          onSuccess={googleLogin}
-                          onFailure={googleLogin}
-                          cookiePolicy={'single_host_origin'}
-                        />
+                        <HeaderButton googleLogin={googleLogin} googleLogout={googleLogout} propIsLogged={propIsLogged} propUser={propUser}  />
+
                       </NavItem>
                     </Nav>
                   </Collapse>
@@ -91,3 +78,10 @@ export default function Header({ googleLogin}) {
     </div>
   );
 }
+Header.propTypes = {
+  googleLogin: PropTypes.func,
+  googleLogout: PropTypes.func,
+  propUser: PropTypes.object,
+  propIsLogged: PropTypes.bool,
+};
+export default Header;

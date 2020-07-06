@@ -9,13 +9,13 @@ import HomePage from 'containers/HomePage/Loadable';
 import Dashboard from 'containers/Dashboard/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
-import { loginGoogle } from '../App/actions'
 
 
 import { useInjectReducer } from '../../utils/injectReducer';
 import { useInjectSaga } from '../../utils/injectSaga';
 
-import makeAppLoading from './selectors';
+import {makeAppLoading, makeCurrentUser , makeIsLogged} from './selectors';
+import { loginGoogle, logoutGoogle } from './actions'
 
 import saga from './saga';
 import reducer from './reducer';
@@ -34,14 +34,13 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Loader from '../../components/Loader.js';
 
-export function App({ googleLogin, propLoading }) {
-
+export function App({ propLoading, googleLogin, googleLogout, propUser, propIsLogged }) {
   useInjectReducer({ key: 'app', reducer });
   useInjectSaga({ key: 'app', saga });
   return (
     <div>
       <Loader isLoading={propLoading} />
-      <Header googleLogin={googleLogin} />
+      <Header googleLogin={googleLogin} googleLogout={googleLogout} propUser={propUser} propIsLogged={propIsLogged} />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/dashboard" component={Dashboard} />
@@ -54,17 +53,23 @@ export function App({ googleLogin, propLoading }) {
 
 App.propTypes = {
   googleLogin: PropTypes.func,
+  googleLogout: PropTypes.func,
   propLoading: PropTypes.bool,
+  propUser: PropTypes.object,
+  propIsLogged: PropTypes.bool,
 };
 
 const mapStateToProps = createStructuredSelector({
   propLoading: makeAppLoading(),
+  propUser: makeCurrentUser(),
+  propIsLogged: makeIsLogged(),
 });
 
-export function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
   return {
-     googleLogin: (response) => dispatch(loginGoogle(response)),
-  };
+    googleLogin: (response) => dispatch(loginGoogle(response)),
+    googleLogout: () => dispatch(logoutGoogle()),
+  }
 }
 
 
